@@ -16,7 +16,7 @@ public class SpringbootApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  涛哥项目启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
+        System.out.println("(♥◠‿◠)ﾉﾞ  涛哥项目启动成功,很开心奥。   ლ(´ڡ`ლ)ﾞ  \n" +
                 " .-------.    ==================       \n" +
                 " |        \\           ||           \n" +
                 " |         \\          ||           \n" +
