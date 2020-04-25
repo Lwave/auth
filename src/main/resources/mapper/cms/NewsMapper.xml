@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cms.mapper.NewsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.cms.entity.News">
+        <id column="news_id" property="newsId" />
+        <result column="title" property="title" />
+        <result column="intro" property="intro" />
+        <result column="content" property="content" />
+        <result column="source" property="source" />
+        <result column="tags" property="tags" />
+        <result column="url" property="url" />
+        <result column="publish_time" property="publishTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        news_id, title, intro, content, source, tags, url, publish_time
+    </sql>
+
+</mapper>

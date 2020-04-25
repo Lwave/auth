@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.emp.mapper.RolesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.emp.entity.Roles">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="note" property="note" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, note, created, updated
+    </sql>
+
+    <resultMap id="aa" type="com.example.emp.entity.SysUsers">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="salt" property="salt" />
+        <result column="email" property="email" />
+        <result column="mobile" property="mobile" />
+        <result column="valid" property="valid" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+        <association property="roles" javaType="com.example.emp.entity.Roles">
+            <id property="id" column="rid"/>
+            <result property="name" column="name"/>
+            <result property="note" column="note"/>
+            <result property="updated" column="updates"/>
+            <result property="created" column="creates"/>
+        </association>
+    </resultMap>
+
+    <select id="getRoleByUserId"  resultMap="aa">
+        select   rs.*,rr.id as rid,rr.`name`,rr.note,rr.created as creates,rr.updated as updates
+              from  sys_users rs
+              left join sys_users_roles r on r.user_id = rs.id
+              left join roles rr on rr.id = r.role_id
+           where rs.id = #{id}
+    </select>
+
+</mapper>

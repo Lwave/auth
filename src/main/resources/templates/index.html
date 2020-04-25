@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <title>i-admin-v1.0 后台管理系统 - 首页</title>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+</head>
+<body>
+<!--头部区域-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">i-admin-v1.0 后台管理系统</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        [[${user.username}]]&nbsp;&nbsp;&nbsp;&nbsp;<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a th:href="@{/resetPwd}">修改密码</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/logout}">退出</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <shiro:hasRole name="admin">
+        <a th:href="@{/cms/news/view}" class="btn btn-default" target="_blank">新闻详情</a>
+    </shiro:hasRole>
+
+    <shiro:hasRole name="normal">
+        <a th:href="@{/cms/news/list}" class="btn btn-default" target="_blank">新闻列表</a>
+    </shiro:hasRole>
+
+</div>
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
